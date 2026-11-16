@@ -6,8 +6,8 @@ export const MODULOS = [
   { nome: 'Fornecedores', caminho: '/fornecedores', perfis: ['ADMIN', 'GERENTE'] },
   { nome: 'Estoque', caminho: '/estoque', perfis: ['ADMIN', 'GERENTE', 'ESTOQUISTA'] },
   { nome: 'Vendas', caminho: '/vendas', perfis: ['ADMIN', 'GERENTE'] },
-  { nome: 'Compras', caminho: null, perfis: ['ADMIN', 'GERENTE'] },
-  { nome: 'Financeiro', caminho: null, perfis: ['ADMIN', 'GERENTE'] },
-  { nome: 'Relatórios', caminho: null, perfis: ['ADMIN', 'GERENTE'] },
+  { nome: 'Compras', caminho: '/compras', perfis: ['ADMIN', 'GERENTE', 'ESTOQUISTA'] },
+  { nome: 'Financeiro', caminho: '/financeiro', perfis: ['ADMIN', 'GERENTE'] },
+  { nome: 'Relatórios', caminho: '/relatorios', perfis: ['ADMIN', 'GERENTE'] },
   { nome: 'Usuários', caminho: null, perfis: ['ADMIN'] },
 ]

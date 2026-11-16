@@ -9,6 +9,9 @@ import Fornecedores from './pages/Fornecedores'
 import Estoque from './pages/Estoque'
 import PDV from './pages/PDV'
 import Vendas from './pages/Vendas'
+import Compras from './pages/Compras'
+import Financeiro from './pages/Financeiro'
+import Relatorios from './pages/Relatorios'
 
 export default function App() {
   return (
@@ -22,6 +25,9 @@ export default function App() {
         <Route path="/estoque" element={<PrivateRoute perfis={['ADMIN', 'GERENTE', 'ESTOQUISTA']}><Estoque /></PrivateRoute>} />
         <Route path="/pdv" element={<PrivateRoute perfis={['ADMIN', 'GERENTE', 'CAIXA']}><PDV /></PrivateRoute>} />
         <Route path="/vendas" element={<PrivateRoute perfis={['ADMIN', 'GERENTE']}><Vendas /></PrivateRoute>} />
+        <Route path="/compras" element={<PrivateRoute perfis={['ADMIN', 'GERENTE', 'ESTOQUISTA']}><Compras /></PrivateRoute>} />
+        <Route path="/financeiro" element={<PrivateRoute perfis={['ADMIN', 'GERENTE']}><Financeiro /></PrivateRoute>} />
+        <Route path="/relatorios" element={<PrivateRoute perfis={['ADMIN', 'GERENTE']}><Relatorios /></PrivateRoute>} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

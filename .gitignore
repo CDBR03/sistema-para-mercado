@@ -22,3 +22,6 @@ Thumbs.db
 # Local Docker data / logs
 *.log
 docker-data/
+
+# Configuração local do Claude Code
+.claude/

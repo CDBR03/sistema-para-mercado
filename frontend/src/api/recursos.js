@@ -32,3 +32,35 @@ export const vendasApi = {
   buscar: (id) => http.get(`/api/vendas/${id}`).then((r) => r.data),
   cancelar: (id, motivo) => http.post(`/api/vendas/${id}/cancelamento`, { motivo }).then((r) => r.data),
 }
+
+export const comprasApi = {
+  listar: (params) => http.get('/api/compras', { params }).then((r) => r.data),
+  buscar: (id) => http.get(`/api/compras/${id}`).then((r) => r.data),
+  sugestao: (fornecedorId) => http.get('/api/compras/sugestao', { params: { fornecedorId } }).then((r) => r.data),
+  criar: (dados) => http.post('/api/compras', dados).then((r) => r.data),
+  atualizar: (id, dados) => http.put(`/api/compras/${id}`, dados).then((r) => r.data),
+  receber: (id, dados) => http.post(`/api/compras/${id}/recebimento`, dados).then((r) => r.data),
+  cancelar: (id, motivo) => http.post(`/api/compras/${id}/cancelamento`, { motivo }).then((r) => r.data),
+}
+
+export const financeiroApi = {
+  listar: (params) => http.get('/api/financeiro/contas', { params }).then((r) => r.data),
+  criar: (dados) => http.post('/api/financeiro/contas', dados).then((r) => r.data),
+  atualizar: (id, dados) => http.put(`/api/financeiro/contas/${id}`, dados).then((r) => r.data),
+  baixar: (id, dados) => http.post(`/api/financeiro/contas/${id}/baixa`, dados).then((r) => r.data),
+  estornar: (id) => http.delete(`/api/financeiro/contas/${id}/baixa`).then((r) => r.data),
+  cancelar: (id, motivo) => http.post(`/api/financeiro/contas/${id}/cancelamento`, { motivo }).then((r) => r.data),
+  resumo: () => http.get('/api/financeiro/resumo').then((r) => r.data),
+  fluxo: (params) => http.get('/api/financeiro/fluxo-caixa', { params }).then((r) => r.data),
+}
+
+const rel = (nome) => (params) => http.get(`/api/relatorios/${nome}`, { params }).then((r) => r.data)
+export const relatoriosApi = {
+  vendas: rel('vendas'), curvaAbc: rel('curva-abc'), categorias: rel('categorias'), operadores: rel('operadores'),
+  pagamentos: rel('pagamentos'), horarios: rel('horarios'), dre: rel('dre'),
+}
+
+export const dashboardApi = {
+  gestao: () => http.get('/api/dashboard').then((r) => r.data),
+  meuDia: () => http.get('/api/dashboard/meu-dia').then((r) => r.data),
+}

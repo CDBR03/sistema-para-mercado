@@ -43,4 +43,8 @@ public class VendaItem {
 
     @Column(nullable = false, precision = 12, scale = 2)
     private BigDecimal total;
+
+    /** Custo do produto na hora da venda (base do CMV e da margem nos relatórios). */
+    @Column(name = "custo_unitario", nullable = false, precision = 12, scale = 2)
+    private BigDecimal custoUnitario;
 }

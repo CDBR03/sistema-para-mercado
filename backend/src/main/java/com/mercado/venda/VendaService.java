@@ -111,6 +111,7 @@ public class VendaService {
             it.setUnidade(p.getUnidade());
             it.setQuantidade(q);
             it.setPrecoUnitario(p.getPrecoVenda());   // o preço vem do cadastro, nunca do navegador
+            it.setCustoUnitario(p.getPrecoCusto());
             it.setTotal(p.getPrecoVenda().multiply(q).setScale(2, RoundingMode.HALF_UP));
             v.getItens().add(it);
             subtotal = subtotal.add(it.getTotal());

@@ -4,6 +4,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -32,6 +33,16 @@ public class ApiExceptionHandler {
     ResponseEntity<Map<String, String>> status(ResponseStatusException ex) {
         String msg = ex.getReason() == null ? "Erro ao processar a requisição" : ex.getReason();
         return ResponseEntity.status(ex.getStatusCode()).body(Map.of("message", msg));
+    }
+
+    /**
+     * Sem isto, a negação do @PreAuthorize vira um encaminhamento para /error, que exige login
+     * e responde 401 — e o front-end trata 401 como sessão expirada, deslogando o usuário.
+     */
+    @ExceptionHandler(AccessDeniedException.class)
+    ResponseEntity<Map<String, String>> semPermissao(AccessDeniedException ex) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(Map.of("message", "Seu perfil não tem permissão para esta ação."));
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
