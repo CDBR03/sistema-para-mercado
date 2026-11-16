@@ -19,7 +19,7 @@ services:
       DB_URL: jdbc:postgresql://db:5432/mercado
       DB_USER: mercado
       DB_PASSWORD: mercado
-      JWT_SECRET: Irei alterar para uma chave mais segura
+      JWT_SECRET: troque-esta-chave-por-uma-com-pelo-menos-32-caracteres
     ports: ["8080:8080"]
 volumes:
   pgdata:
