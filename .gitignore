@@ -1,0 +1,24 @@
+# Front-end
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# Java / Maven
+backend/target/
+*.class
+
+# IDEs and OS files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+
+# Local Docker data / logs
+*.log
+docker-data/

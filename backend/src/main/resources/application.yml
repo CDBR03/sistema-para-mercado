@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/mercado}
+    username: ${DB_USER:mercado}
+    password: ${DB_PASSWORD:mercado}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+app:
+  jwt:
+    secret: ${JWT_SECRET:troque-esta-chave-por-uma-com-pelo-menos-32-caracteres}
+    expiration-ms: 28800000
+  cors:
+    origins: ${CORS_ORIGINS:http://localhost:5173}
